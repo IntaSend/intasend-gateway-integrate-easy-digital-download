@@ -101,7 +101,7 @@ function pw_edd_process_payment($purchase_data) {
             'api_ref'=>$payment,
             'amount' => $purchase_data['price'],
             'currency' => $edd_options['currency'],
-            'email' => $purchase_data['user_info']['user_email'],
+            'email' => $purchase_data['user_email'],
             'first_name' => $purchase_data['user_info']['first_name'],
             'last_name' => $purchase_data['user_info']['last_name'],
             'country' => 'US'
