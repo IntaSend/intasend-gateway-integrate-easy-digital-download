@@ -1,16 +1,16 @@
 <?php
 /*
-Plugin Name: Easy Digital Downloads - Intasend Gateway
-Description: A Intasend gateway for Easy Digital Downloads
+Plugin Name: Easy Digital Downloads - IntaSend Gateway
+Description: A IntaSend gateway for Easy Digital Downloads
 Version: 1.0
-Author: Kishan Patel
-Contributors: Kishan Patel
+Author: Kishan Patel, IntaSend Solutions Limited
+Contributors: Kishan Patel, IntaSend Solutions Limited
 */
  
  
 // registers the gateway
 function pw_edd_register_gateway($gateways) {
-	$gateways['intasend_gateway'] = array('admin_label' => 'Intasend Gateway', 'checkout_label' => __('Intasend Gateway', 'pw_edd'));
+	$gateways['intasend_gateway'] = array('admin_label' => 'IntaSend Gateway', 'checkout_label' => __('IntaSend Gateway', 'pw_edd'));
 	return $gateways;
 }
 add_filter('edd_payment_gateways', 'pw_edd_register_gateway');
@@ -209,21 +209,21 @@ function pw_edd_add_settings($settings) {
 	$intasend_gateway_settings = array(
 		array(
 			'id' => 'intasend_gateway_settings',
-			'name' => '<strong>' . __('Intasend Gateway Settings', 'pw_edd') . '</strong>',
+			'name' => '<strong>' . __('IntaSend Gateway Settings', 'pw_edd') . '</strong>',
 			'desc' => __('Configure the gateway settings', 'pw_edd'),
 			'type' => 'header'
 		),
 		array(
 			'id' => 'intasend_gateway_live_api_key',
 			'name' => __('Live API Key', 'pw_edd'),
-			'desc' => __('Enter your live API key, found in your gateway Account Settins', 'pw_edd'),
+			'desc' => __('Enter your live API key, found in your gateway Account Settings', 'pw_edd'),
 			'type' => 'text',
 			'size' => 'regular'
 		),
 		array(
 			'id' => 'intasend_gateway_test_api_key',
 			'name' => __('Test API Key', 'pw_edd'),
-			'desc' => __('Enter your test API key, found in your Intasend Account Settins', 'pw_edd'),
+			'desc' => __('Enter your test API key, found in your IntaSend Account Settings', 'pw_edd'),
 			'type' => 'text',
 			'size' => 'regular'
         )
