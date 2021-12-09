@@ -98,6 +98,7 @@ function pw_edd_process_payment($purchase_data) {
         CURLOPT_POSTFIELDS => array(
             'public_key' => $secret_key,
             'redirect_url'=>get_site_url().'/?payment='.$payment,
+            'api_ref'=>$payment,
             'amount' => $purchase_data['price'],
             'currency' => $edd_options['currency'],
             'email' => $purchase_data['user_info']['user_email'],
