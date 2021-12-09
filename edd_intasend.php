@@ -31,11 +31,11 @@ function pw_edd_process_payment($purchase_data) {
 	if(edd_is_test_mode()) {
 		// set test credentials here
 		$secret_key = trim( $edd_options['intasend_gateway_test_api_key'] );
-        $checkout_url='https://sandbox.intasend.com/api/v1/checkout/';
+        $checkout_url='https://sandbox.intasend.com';
 	} else {
 		// set live credentials here
 		$secret_key = trim( $edd_options['intasend_gateway_live_api_key'] );
-        $checkout_url='https://sandbox.intasend.com/api/v1/checkout/';
+        $checkout_url='https://payment.intasend.com';
 	}
  
 	/**********************************
@@ -86,7 +86,7 @@ function pw_edd_process_payment($purchase_data) {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => $checkout_url,
+        CURLOPT_URL => $checkout_url.'/api/v1/checkout/',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -144,7 +144,7 @@ function my_custom_url_handler() {
         } else {
             // set live credentials here
             $secret_key = trim( $edd_options['intasend_gateway_live_api_key'] );
-            $checkout_url='https://sandbox.intasend.com';
+            $checkout_url='https://payment.intasend.com';
         }
 
         $curl = curl_init();
