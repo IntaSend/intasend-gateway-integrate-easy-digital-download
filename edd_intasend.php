@@ -104,7 +104,8 @@ function pw_edd_process_payment($purchase_data) {
             'email' => $purchase_data['user_email'],
             'first_name' => $purchase_data['user_info']['first_name'],
             'last_name' => $purchase_data['user_info']['last_name'],
-            'country' => 'US'
+            'country' => 'US',
+	    'host' => get_site_url()
         ),
         CURLOPT_HTTPHEADER => array(
             'Accept: application/json'
@@ -137,7 +138,6 @@ function my_custom_url_handler() {
         $tracking_id=$_GET['tracking_id'];
         $signature=$_GET['signature'];
         $checkout_id=$_GET['checkout_id'];
-
         if(edd_is_test_mode()) {
             // set test credentials here
             $secret_key = trim( $edd_options['intasend_gateway_test_api_key'] );
@@ -226,7 +226,7 @@ function pw_edd_add_settings($settings) {
 			'desc' => __('Enter your test API key, found in your IntaSend Account Settings', 'pw_edd'),
 			'type' => 'text',
 			'size' => 'regular'
-        )
+		)
 	);
  
 	return array_merge($settings, $intasend_gateway_settings);	
