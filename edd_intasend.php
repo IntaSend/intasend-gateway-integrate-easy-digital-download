@@ -52,6 +52,10 @@ function pw_edd_process_payment($purchase_data) {
  
 	// check for any stored errors
 	$errors = edd_get_errors();
+	$currency = "USD";
+	if (!empty($edd_options['currency'])) {
+		$currency = $edd_options['currency'];	
+	}
 	if(!$errors) {
  
 		$purchase_summary = edd_get_purchase_summary($purchase_data);
@@ -65,7 +69,7 @@ function pw_edd_process_payment($purchase_data) {
 			'date' => $purchase_data['date'], 
 			'user_email' => $purchase_data['user_email'],
 			'purchase_key' => $purchase_data['purchase_key'],
-			'currency' => $edd_options['currency'],
+			'currency' => $currency,
 			'downloads' => $purchase_data['downloads'],
 			'cart_details' => $purchase_data['cart_details'],
 			'user_info' => $purchase_data['user_info'],
@@ -100,7 +104,7 @@ function pw_edd_process_payment($purchase_data) {
             'redirect_url'=>get_site_url().'/?payment='.$payment,
             'api_ref'=>$payment,
             'amount' => $purchase_data['price'],
-            'currency' => $edd_options['currency'],
+            'currency' => $currency,
             'email' => $purchase_data['user_email'],
             'first_name' => $purchase_data['user_info']['first_name'],
             'last_name' => $purchase_data['user_info']['last_name'],
